@@ -25,13 +25,11 @@ def read_data_csv(file_path):
 
 
 def sort_data(data, sort_field):
-    sorted_data = sorted(data.items(), key=lambda x: x[1][sort_field])
-    return dict(sorted_data)
+    return dict(sorted(data.items(), key=lambda x: x[1][sort_field]))
 
 
 def filter_data(data, filter_field, filter_value):
-    filtered_data = {k: v for k, v in data.items() if v[filter_field] == filter_value}
-    return filtered_data
+    return {k: v for k, v in data.items() if v[filter_field] == filter_value}
 
 
 def write_data_csv(file_path, data):
