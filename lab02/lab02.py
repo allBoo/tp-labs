@@ -33,5 +33,6 @@ print(f'Суммы элементов каждого столбца: {sum_cols}\
 print(f'Доли каждого столбца в сумме элементов матрицы: {fractions}\n\n')
 print(f'Матрица B ({N+1}x{M}):\n{B}')
 
+# исходную матрицу и результат сохраняем красиво в файл
 np.savetxt('input.txt', A, fmt="%.6f")
 np.savetxt('output.txt', B, fmt="%.6f")
