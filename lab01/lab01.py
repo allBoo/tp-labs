@@ -13,8 +13,8 @@ def remove_even_chains_v1(A: list, B: list) -> list:
             while i < len(A) and A[i] % 2 == 0:
                 i += 1
             chain_end = i - 1
-            if any(x in B for x in A[chain_start:chain_end+1]):
-                del A[chain_start:chain_end+1]
+            if any(x in B for x in A[chain_start:chain_end + 1]):
+                del A[chain_start:chain_end + 1]
                 i = chain_start
         else:
             i += 1
@@ -27,7 +27,7 @@ def remove_even_chains_v2(A: list, B: list) -> list:
     is_even = lambda x: x % 2 == 0
     partitioned_a = partitionby(is_even, A)
 
-    belongs_to_b = lambda chunk: any(x in B for x in chunk)
+    belongs_to_b = lambda chunk: any(x in B for x in chunk if x % 2 == 0)
     clean_a = concat(remove(belongs_to_b, partitioned_a))
 
     return list(clean_a)
@@ -45,12 +45,12 @@ def get_list_from_input() -> list:
 
 def get_random_list(n: int) -> list:
     # получение списка случайных чисел
-    lst = [random.randint(1, 20) for _ in range(n)]
-    return lst
+    return [random.randint(1, 20) for _ in range(n)]
 
 
 # Разбор аргументов командной строки
-parser = argparse.ArgumentParser(description='Удаление цепочек четных элементов из списка A, содержащих элементы из списка B')
+parser = argparse.ArgumentParser(
+    description='Удаление цепочек четных элементов из списка A, содержащих элементы из списка B')
 parser.add_argument('-m', '--manual', action='store_true', help='ввод списка A и B в интерактивном режиме')
 parser.add_argument('-nA', '--length_a', type=int, help='длина списка A при генерации случайным образом')
 parser.add_argument('-nB', '--length_b', type=int, help='длина списка B при генерации случайным образом')
